@@ -46,10 +46,10 @@ library(rnaturalearth)
 7.  Render the document and fix any errors.
 
 ```{r}
-#| eval: true
+#| eval: false
  
-gapminder_2007 <- gapminder |> 
-  filter(year == 2007) 
+gapminder_2007 <- ___ |> 
+  ___(year == 2007) 
 ```
 
 ## Task 3: Summarize data for life expectancy by continent
@@ -73,13 +73,13 @@ gapminder_2007 <- gapminder |>
 8.  Render the document and fix any errors.
 
 ```{r}
-#| eval: true
+#| eval: false
 
-gapminder_summary_2007 <- gapminder_2007 |> 
-  group_by(continent) |> 
+gapminder_summary_2007 <- ___ |> 
+  group_by(___) |> 
   summarise(
     count = n(),
-    lifeExp = median(lifeExp)
+    lifeExp = median(___)
   )
 ```
 
@@ -95,7 +95,7 @@ gapminder_summary_2007 <- gapminder_2007 |>
 
 4.  On a new line use the `summarise()` function to calculate and median life expectancy.
 
-5.  Use the assignment operator to assign the data to an object named `gapminder_summary_continent_year`
+5.  Use the assignment operator to assign the data to an object named `gapminder_summary_continent_year` .
 
 6.  Run the code contained in the code chunk and fix any errors.
 
@@ -104,11 +104,11 @@ gapminder_summary_2007 <- gapminder_2007 |>
 8.  Render the document and fix any errors.
 
 ```{r}
-#| eval: true
+#| eval: false
 
-gapminder_summary_continent_year <- gapminder |> 
-  group_by(continent, year) |> 
-  summarise(lifeExp = median(lifeExp)) 
+gapminder_summary_continent_year <- gapminder ___ 
+  group_by(continent, ___) |> 
+  ___(lifeExp = median(lifeExp)) 
 
 ```
 
@@ -145,16 +145,6 @@ gapminder_summary_continent_year <- read_rds(here::here("data/gapminder-summary-
 
 5.  What are the data types of the three variables used for aesthetic mappings?
 
-```{r}
-
-ggplot(data = gapminder_2007,
-       mapping = aes(x = continent,
-                     y = lifeExp,
-                     fill = continent)) +
-  geom_boxplot(outlier.shape = NA) 
-
-```
-
 ## Task 7: Create a timeseries plot
 
 1.  Add a new code chunk below.
@@ -166,17 +156,6 @@ ggplot(data = gapminder_2007,
 -   continent to color using the `color = continent` argument inside `aes()`
 
 3.  Run the code contained in the code chunk and fix any errors.
-
-```{r}
-
-ggplot(data = gapminder_summary_continent_year,
-       mapping = aes(x = year,
-                     y = lifeExp,
-                     color = continent)) +
-  geom_line() +
-  geom_point() 
-
-```
 
 ## Task 8: Create a barplot
 
@@ -191,13 +170,6 @@ ggplot(data = gapminder_summary_continent_year,
 
 3.  Run the code contained in the code chunk and fix any errors.
 
-```{r}
-ggplot(data = gapminder_summary_2007,
-       mapping = aes(x = continent,
-                     y = count)) +
-  geom_col()
-```
-
 ### with `geom_bar()`
 
 1.  Add a new code chunk below.
@@ -209,12 +181,6 @@ ggplot(data = gapminder_summary_2007,
 3.  Run the code contained in the code chunk and fix any errors.
 
 4.  The plot is identical to the plot created with `geom_col()`. Why? What does the `geom_bar()` function do? Write your text here:
-
-```{r}
-ggplot(data = gapminder_2007,
-       mapping = aes(x = continent)) +
-  geom_bar()
-```
 
 ## Task 9: Create a histogram
 
@@ -238,15 +204,6 @@ ggplot(data = gapminder_2007,
 
 7.  What happens by adding the 'breaks' argument? Play around with the numbers inside of `seq()` to see what changes. Describe here what you observe:
 
-```{r}
-
-ggplot(data = gapminder_2007,
-       mapping = aes(x = lifeExp, 
-                     fill = continent)) +
-  geom_histogram(col = "grey30", breaks = seq(40, 85, 2.5)) 
-
-```
-
 ## Task 10: Scatterplot and faceting
 
 1.  Add a new code chunk below.
@@ -264,18 +221,6 @@ ggplot(data = gapminder_2007,
 
 6.  Run the code contained in the code chunk and fix any errors.
 
-```{r}
-
-ggplot(data = gapminder_2007,
-       mapping = aes(x = gdpPercap,
-                     y = lifeExp,
-                     size = pop,
-                     color = country)) +
-  geom_point(show.legend = FALSE) +
-  facet_wrap(~continent) 
-  
-```
-
 ## Task 11: Create a lineplot and use facets
 
 1.  A code chunk with complete code has already been prepared.
@@ -291,7 +236,7 @@ ggplot(data = gapminder_2007,
 6.  Render the document and fix any errors.
 
 ```{r}
-#| eval: true
+#| eval: false
 
 ggplot(data = gapminder,
        mapping = aes(x = year, 
@@ -318,7 +263,7 @@ The code chunk below contains code for a world map that shows countries by incom
 3.  Render the document and fix any errors.
 
 ```{r}
-#| eval: true
+#| eval: false
 
 world <- ne_countries(scale = "small", returnclass = "sf")
 
