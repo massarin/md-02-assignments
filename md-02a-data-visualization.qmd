@@ -131,7 +131,7 @@ gapminder_summary_continent_year <- read_rds(here::here("data/gapminder-summary-
 
 ## Task 6: Create a boxplot
 
-1.  Add a new code chunk below point 5.
+1.  A code chunk has already been created.
 
 2.  Use the `ggplot()` function and the `gapminder_2007` object to create a boxplot with the following aesthetic mappings:
 
@@ -145,9 +145,13 @@ gapminder_summary_continent_year <- read_rds(here::here("data/gapminder-summary-
 
 5.  What are the data types of the three variables used for aesthetic mappings?
 
+```{r}
+
+```
+
 ## Task 7: Create a timeseries plot
 
-1.  Add a new code chunk below.
+1.  A code chunk has already been created.
 
 2.  Use the `ggplot()` function and the `gapminder_summary_continent_year` object to create a connected scatterplot (also called timeseries plot) using the `geom_line()` and `geom_point()`functions with the following aesthetic mappings:
 
@@ -157,11 +161,15 @@ gapminder_summary_continent_year <- read_rds(here::here("data/gapminder-summary-
 
 3.  Run the code contained in the code chunk and fix any errors.
 
+```{r}
+
+```
+
 ## Task 8: Create a barplot
 
 ### with `geom_col()`
 
-1.  Add a new code chunk below.
+1.  A code chunk has already been created.
 
 2.  Use the `ggplot()` function and the `gapminder_summary_2007` object to create a barplot using the `geom_col()` function with the following aesthetic mappings:
 
@@ -170,9 +178,13 @@ gapminder_summary_continent_year <- read_rds(here::here("data/gapminder-summary-
 
 3.  Run the code contained in the code chunk and fix any errors.
 
+```{r}
+
+```
+
 ### with `geom_bar()`
 
-1.  Add a new code chunk below.
+1.  A code chunk has already been created.
 
 2.  Use the `ggplot()` function and the `gapminder_2007` object to create a barplot using the `geom_bar()` function with the following aesthetic mappings:
 
@@ -182,9 +194,13 @@ gapminder_summary_continent_year <- read_rds(here::here("data/gapminder-summary-
 
 4.  The plot is identical to the plot created with `geom_col()`. Why? What does the `geom_bar()` function do? Write your text here:
 
+```{r}
+
+```
+
 ## Task 9: Create a histogram
 
-1.  Add a new code chunk below.
+1.  A code chunk has already been created.
 
 2.  Use the `ggplot()` function and the `gapminder_2007` object to create a histogram using the `geom_histogram()` function with the following aesthetic mappings:
 
@@ -204,9 +220,13 @@ gapminder_summary_continent_year <- read_rds(here::here("data/gapminder-summary-
 
 7.  What happens by adding the 'breaks' argument? Play around with the numbers inside of `seq()` to see what changes. Describe here what you observe:
 
+```{r}
+
+```
+
 ## Task 10: Scatterplot and faceting
 
-1.  Add a new code chunk below.
+1.  A code chunk has already been created.
 
 2.  Use the `ggplot()` function and assign `gapminder_2007` and create a scatterplot using the `geom_point()`function with the following aesthetic mappings:
 
@@ -220,6 +240,10 @@ gapminder_summary_continent_year <- read_rds(here::here("data/gapminder-summary-
 5.  Use the variable continent to facet the plot by adding: `facet_wrap(~continent)`.
 
 6.  Run the code contained in the code chunk and fix any errors.
+
+```{r}
+
+```
 
 ## Task 11: Create a lineplot and use facets
 
@@ -315,4 +339,4 @@ Once you have ensured that the Quarto document renders without errors and you ha
 4.  Click on the "Issues" tab.
 5.  Click on the green "New issue" button.
 6.  In the "Title" field write: "Completed module 2 assignments".
-7.  In the "Leave a comment" field, tag the course instructors @larnsce @mianzg @sskorik01 and ask some questions, if you like.
+7.  In the "Leave a comment" field, tag the course instructors @larnsce and ask some questions.
