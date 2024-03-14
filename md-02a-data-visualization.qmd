@@ -233,7 +233,7 @@ gapminder_summary_continent_year <- read_rds(here::here("data/gapminder-summary-
 -   gdpPercap the x-axis;
 -   lifeExp to the y-axis;
 -   population to the size argument;
--   country to color using the `color = continent` argument inside `aes()`
+-   country to color using the `color = country` argument inside `aes()`
 
 4.  Run the code contained in the code chunk and fix any errors.
 
