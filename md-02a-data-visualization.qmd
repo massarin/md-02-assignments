@@ -239,7 +239,9 @@ gapminder_summary_continent_year <- read_rds(here::here("data/gapminder-summary-
 
 5.  Use the variable continent to facet the plot by adding: `facet_wrap(~continent)`.
 
-6.  Run the code contained in the code chunk and fix any errors.
+6.  Edit `geom_point()` to remove the legend: `geom_point(show.legend = FALSE)`
+
+7.  Run the code contained in the code chunk and fix any errors.
 
 ```{r}
 
