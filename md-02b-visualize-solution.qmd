@@ -67,7 +67,10 @@ gapminder_summary_continent_year <- gapminder |>
 6.  Run the code and verify you see 5 boxes.
 
 ```{r}
-
+ggplot(data = gapminder_2007,
+       mapping = aes(x = continent,
+                     y = lifeExp)) +
+  geom_boxplot()
 ```
 
 ## Task 4: Create a timeseries plot
@@ -91,7 +94,12 @@ gapminder_summary_continent_year <- gapminder |>
 7.  Run the code and verify you see 5 colored lines with points showing trends over time.
 
 ```{r}
-
+ggplot(data = gapminder_summary_continent_year,
+       mapping = aes(x = year,
+                     y = lifeExp,
+                     color = continent)) +
+  geom_line() +
+  geom_point()
 ```
 
 ## Task 5: Create a barplot
@@ -114,7 +122,10 @@ gapminder_summary_continent_year <- gapminder |>
 6.  Run the code and verify you see 5 bars showing counts per continent.
 
 ```{r}
-
+ggplot(data = gapminder_summary_2007,
+       mapping = aes(x = continent,
+                     y = count)) +
+  geom_col()
 ```
 
 ### with `geom_bar()`
@@ -138,7 +149,9 @@ gapminder_summary_continent_year <- gapminder |>
 *Your answer here:*
 
 ```{r}
-
+ggplot(data = gapminder_2007,
+       mapping = aes(x = continent)) +
+  geom_bar()
 ```
 
 ## Task 6: Create a histogram
@@ -168,7 +181,11 @@ gapminder_summary_continent_year <- gapminder |>
 *Your answer here:*
 
 ```{r}
-
+ggplot(data = gapminder_2007,
+       mapping = aes(x = lifeExp,
+                     fill = continent)) +
+  geom_histogram(col = "grey30",
+                 breaks = seq(40, 85, 2.5))
 ```
 
 ## Task 7: Scatterplot and faceting
@@ -197,7 +214,13 @@ gapminder_summary_continent_year <- gapminder |>
 9.  Run the code and verify you see 5 panels with scatterplots, one for each continent.
 
 ```{r}
-
+ggplot(data = gapminder_2007,
+       mapping = aes(x = gdpPercap,
+                     y = lifeExp,
+                     size = pop,
+                     color = country)) +
+  geom_point(show.legend = FALSE) +
+  facet_wrap(~continent)
 ```
 
 ## Task 8: Data communication
