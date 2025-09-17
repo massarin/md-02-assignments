@@ -25,113 +25,137 @@ library(dplyr)
 
 ## Task 2: Transform for data in 2007
 
-**Fill in the gaps**
+**Read and understand the code**
 
-1.  A code chunk has already been created below.
+1.  Read the code below out loud, verbally describing what each line does.
 
-2.  Start with the `gapminder` object and add the pipe operator at the end of the line.
+2.  Run the code chunk below.
 
-3.  On a new line use the `filter()` function to narrow down the data for observation of the year 2007.
-
-4.  Use the assignment operator to assign the data to an object named `gapminder_2007`.
-
-5.  Run the code contained in the code chunk and fix any errors.
-
-6.  Next to the code chunk option `#| eval:` change the value from `false` to `true`.
-
-7.  Render the document and fix any errors.
+3.  Observe the output in the console.
 
 ```{r}
-#| eval: false
-
-gapminder_2007 <- ___ |>
-  ___(year == 2007)
+gapminder |>
+  filter(year == 2007)
 ```
+
+4.  Write in your own words what you think this code does:
+
+*Your answer here:*
+
+5.  Now run the code chunk below that assigns the result to an object.
+
+6.  **Tip:** Watch the Environment tab in RStudio (top right pane) to see the new object appear.
+
+```{r}
+gapminder_2007 <- gapminder |>
+  filter(year == 2007)
+```
+
+7.  Click on `gapminder_2007` in the Environment tab to view the data. What do you notice about this dataset compared to the original `gapminder` dataset?
+
+*Your answer here:*
 
 ## Task 3: Summarize data for life expectancy by continent
 
-**Fill in the gaps**
+**Read and understand the code**
 
-1.  A code chunk has already been created.
+1.  Read the code below out loud, verbally describing what each line does.
 
-2.  Start with the `gapminder_2007` object and add the pipe operator at the end of the line.
+2.  Run the code chunk below.
 
-3.  On a new line use the `group_by()` function to group the operations that follow by continent. Add the pipe operator at the end of the line.
-
-4.  On a new line use the `summarise()` function to calculate the number of observations (count) and median life expectancy.
-
-5.  Use the assignment operator to assign the data to an object named `gapminder_summary_2007`.
-
-6.  Run the code contained in the code chunk and fix any errors.
-
-7.  Next to the code chunk option `#| eval:` change the value from `false` to `true`.
-
-8.  Render the document and fix any errors.
+3.  Observe the output in the console.
 
 ```{r}
-#| eval: false
-
-gapminder_summary_2007 <- ___ |>
-  group_by(___) |>
+gapminder_2007 |>
+  group_by(continent) |>
   summarise(
     count = n(),
-    lifeExp = median(___)
+    lifeExp = median(lifeExp)
   )
 ```
 
-## Task 4: Summarize data for life expectancy by continent and year
+4.  Write in your own words what you think this code does:
 
-**Fill in the gaps**
+*Your answer here:*
 
-1.  A code chunk has already been created.
+5.  Now run the code chunk below that assigns the result to an object.
 
-2.  Start with the `gapminder` object and add the pipe operator at the end of the line.
-
-3.  On a new line use the `group_by()` function to group the operations that follow by continent and year. Add the pipe operator at the end of the line.
-
-4.  On a new line use the `summarise()` function to calculate and median life expectancy.
-
-5.  Use the assignment operator to assign the data to an object named `gapminder_summary_continent_year` .
-
-6.  Run the code contained in the code chunk and fix any errors.
-
-7.  Next to the code chunk option `#| eval:` change the value from `false` to `true`.
-
-8.  Render the document and fix any errors.
+6.  **Tip:** Watch the Environment tab to see how this new object differs from `gapminder_2007`.
 
 ```{r}
-#| eval: false
-
-gapminder_summary_continent_year <- gapminder ___
-  group_by(continent, ___) |>
-  ___(lifeExp = median(lifeExp))
-
+gapminder_summary_2007 <- gapminder_2007 |>
+  group_by(continent) |>
+  summarise(
+    count = n(),
+    lifeExp = median(lifeExp)
+  )
 ```
 
-## Task 13: Data communication
+7.  Look at the `gapminder_summary_2007` object in the Environment tab. How many rows and columns does it have? Why is this different from `gapminder_2007`?
+
+*Your answer here:*
+
+## Task 4: Summarize data for life expectancy by continent and year
+
+**Read and understand the code**
+
+1.  Read the code below out loud, verbally describing what each line does.
+
+2.  Run the code chunk below.
+
+3.  Observe the output in the console.
+
+```{r}
+gapminder |>
+  group_by(continent, year) |>
+  summarise(lifeExp = median(lifeExp))
+```
+
+4.  Write in your own words what you think this code does:
+
+*Your answer here:*
+
+5.  Now run the code chunk below that assigns the result to an object.$
+
+6.  **Tip:** Notice how the Environment tab shows different information for different types of objects.
+
+```{r}
+gapminder_summary_continent_year <- gapminder |>
+  group_by(continent, year) |>
+  summarise(lifeExp = median(lifeExp))
+```
+
+7.  Compare this result with Task 3. What's different about grouping by two variables instead of one? How does this affect the output?
+
+*Your answer here:*
+
+## Task 5: Create your first plot
+
+Now that you understand how to transform data, let's create a plot.
+
+1.  Read the code below out loud, verbally describing what you think it will do.
+
+2.  Run the code chunk.
+
+```{r}
+ggplot(data = gapminder_2007, 
+       mapping = aes(x = continent, 
+                     y = lifeExp)) +
+  geom_boxplot()
+```
+
+3.  Write in your own words what this plot shows:
+
+*Your answer here:*
+
+## Task 6: Data communication
 
 **In the YAML header (between the three dashes at the top of the document)**
 
 1.  Add your name as the author of this document
+
 2.  Render the document and fix any errors
 
-## Task 14: Complete assignment
+## Task 7: Commit & Push & Issue
 
-### Stage, Commit & Push to GitHub
-
-1.  Open the Git pane in RStudio. It's in the top right corner in a separate tab.
-2.  **Stage** your changes by checking appropriate box next to all files (if you select one file with your mouse, you can then highlight them all with Ctrl + A on your keyboard and check all boxes)
-3.  Write a meaningful commit message (e.g. "Completed homework assignment 02.) in the **Commit message** box
-4.  Click **Commit**. Note that every commit needs to have a commit message associated with it.
-
-### Open an issue on GitHub
-
-Once you have ensured that the Quarto document renders without errors and you have pushed all your changes to GitHub, you can complete the assignment by opening an issue on
-
-1.  Open [github.com](https://github.com/) in your browser.
-2.  Navigate to the GitHub organisation for the course.
-3.  Find the repository md-02-assignments that ends with your GitHub username.
-4.  Click on the "Issues" tab.
-5.  Click on the green "New issue" button.
-6.  In the "Title" field write: "Completed module 2 assignments".
-7.  In the "Leave a comment" field, tag the course instructors @larnsce and ask some questions.
+-   Refer back to the instructions for Step 2 and Step 3 on the course website to complete the assignment 02a: <https://ds4owd-002.github.io/website/assignments/md-02/am-02-1-data-visualisation.html#step-2-commit-and-push-your-changes>
