@@ -115,7 +115,7 @@ gapminder |>
 
 *Your answer here:*
 
-5.  Now run the code chunk below that assigns the result to an object.$
+5.  Now run the code chunk below that assigns the result to an object.\$
 
 6.  **Tip:** Notice how the Environment tab shows different information for different types of objects.
 
