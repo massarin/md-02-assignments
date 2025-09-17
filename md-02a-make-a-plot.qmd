@@ -1,6 +1,6 @@
 ---
 title: "Make a Plot"
-author: ""
+author: "Your Name Here"
 format:
   html:
     embed-resources: true
@@ -152,9 +152,9 @@ ggplot(data = gapminder_2007,
 
 **In the YAML header (between the three dashes at the top of the document)**
 
-1.  Add your name as the author of this document
+1.  Add your name as the author of this document.
 
-2.  Render the document and fix any errors
+2.  Render the document and fix any errors.
 
 ## Task 7: Commit & Push & Issue
 

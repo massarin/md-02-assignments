@@ -222,31 +222,14 @@ ggplot(data = gapminder_2007,
   facet_wrap(~continent)
 ```
 
-
-## Task 10: Data communication
+## Task 8: Data communication
 
 **In the YAML header (between the three dashes at the top of the document)**
 
-1.  Add your name as the author of this document
-2.  Render the document and fix any errors
+1.  Add your name as the author of this document.
 
-## Task 11: Complete assignment
+2.  Render the document and fix any errors.
 
-### Stage, Commit & Push to GitHub
+## Task 9: Commit & Push & Issue
 
-1.  Open the Git pane in RStudio. It's in the top right corner in a separate tab.
-2.  **Stage** your changes by checking appropriate box next to all files (if you select one file with your mouse, you can then highlight them all with Ctrl + A on your keyboard and check all boxes)
-3.  Write a meaningful commit message (e.g. "Completed homework assignment 02.) in the **Commit message** box
-4.  Click **Commit**. Note that every commit needs to have a commit message associated with it.
-
-### Open an issue on GitHub
-
-Once you have ensured that the Quarto document renders without errors and you have pushed all your changes to GitHub, you can complete the assignment by opening an issue on
-
-1.  Open [github.com](https://github.com/) in your browser.
-2.  Navigate to the GitHub organisation for the course.
-3.  Find the repository md-02-assignments that ends with your GitHub username.
-4.  Click on the "Issues" tab.
-5.  Click on the green "New issue" button.
-6.  In the "Title" field write: "Completed module 2 assignments".
-7.  In the "Leave a comment" field, tag the course instructors @larnsce and ask some questions.
+-   Refer back to the instructions for Step 2 and Step 3 on the course website to complete the assignment 02b: <https://ds4owd-002.github.io/website/assignments/md-02/am-02-1-data-visualisation.html#step-2-commit-and-push-your-changes>
