@@ -11,217 +11,226 @@ editor_options:
   chunk_output_type: console
 ---
 
-## Task 5: Data visualization
+## Task 1: Load packages
 
-Thank you for working through the previous tasks. We are convinced that you have done a great job, but because the task descriptions aren't always unambiguous, we have imported the data that we would have expected to be created and stored in the objects `gapminder_2007`, `gapminder_summary_2007` and `gapminder_summary_continent_year` at the previous code chunks. This is to ensure that you can work through the following tasks.
-
-1.  Run the code contained in the code chunk below to import the data.
+1.  Run the code chunk below to load the required packages.
 
 ```{r}
-#| label: load-data
-
-gapminder_2007 <- read_rds(here::here("data/gapminder-2007.rds"))
-
-gapminder_summary_2007 <- read_rds(here::here("data/gapminder-summary-2007.rds"))
-
-gapminder_summary_continent_year <- read_rds(here::here("data/gapminder-summary-continent-year.rds"))
-
+library(gapminder)
+library(ggplot2)
+library(dplyr)
+library(sf)
+library(rnaturalearth)
 ```
 
-## Task 6: Create a boxplot
+## Task 2: Create data for visualization
 
-1.  A code chunk has already been created.
+1.  Run the three code chunks below to create the data objects needed for the visualization tasks.
 
-2.  Use the `ggplot()` function and the `gapminder_2007` object to create a boxplot with the following aesthetic mappings:
-
--   continent to the x-axis;
--   life expectancy to the y-axis;
--   continent to color using the `fill = continent` argument inside `aes()`
-
-3.  Do not display (ignore) the outliers in the plot. **Note: Use a search engine or an AI tool to find the solution and add the link to the solution you have found.**
-
-4.  Run the code contained in the code chunk and fix any errors.
-
-5.  What are the data types of the three variables used for aesthetic mappings?
+2.  Check in the Environment pane that the three objects have been created correctly. 
 
 ```{r}
-
+gapminder_2007 <- gapminder |>
+  filter(year == 2007)
 ```
 
-## Task 7: Create a timeseries plot
+```{r}
+gapminder_summary_2007 <- gapminder_2007 |>
+  group_by(continent) |>
+  summarise(
+    count = n(),
+    lifeExp = median(lifeExp)
+  )
+```
 
-1.  A code chunk has already been created.
+```{r}
+gapminder_summary_continent_year <- gapminder |>
+  group_by(continent, year) |>
+  summarise(lifeExp = median(lifeExp))
+```
 
-2.  Use the `ggplot()` function and the `gapminder_summary_continent_year` object to create a connected scatterplot (also called timeseries plot) using the `geom_line()` and `geom_point()`functions with the following aesthetic mappings:
+## Task 3: Create a boxplot
+
+1.  Write code to create a boxplot showing life expectancy by continent.
+
+2.  Start with: `ggplot(data = gapminder_2007)` to use the `gapminder_2007` object as the data for plot.
+
+3. Then, add a comma after `gapminder_2007` and add `mapping = aes()` function.
+
+4. Inside `aes()`, add the following aesthetic mappings: 
 
 -   year to the x-axis;
 -   life expectancy to the y-axis;
--   continent to color using the `color = continent` argument inside `aes()`
 
-3.  Run the code contained in the code chunk and fix any errors.
+5.  Add a `+` at the end of the line, then on a new line add: `geom_boxplot()`
+
+4.  Run the code and verify you see 5 boxes.
 
 ```{r}
-
+ggplot(data = gapminder_2007, 
+       mapping = aes(x = continent, 
+                     y = lifeExp)) +
+  geom_boxplot()
 ```
 
-## Task 8: Create a barplot
+## Task 4: Create a timeseries plot
+
+1.  Write code to create a timeseries plot showing how median life expectancy changed over time for each continent.
+
+2.  Start with: `ggplot(data = gapminder_summary_continent_year)` to use the `gapminder_summary_continent_year` object as the data for plot.
+
+3.  Then, add a comma after `gapminder_summary_continent_year` and add `mapping = aes()` function.
+
+4.  Inside `aes()`, add the following aesthetic mappings:
+
+-   year to the x-axis;
+-   life expectancy to the y-axis;
+-   continent to color using the `color = continent` argument
+
+5.  Add a `+` at the end of the line, then on a new line add: `geom_line()`
+
+6.  Add another `+` at the end of the line, then on a new line add: `geom_point()`
+
+7.  Run the code and verify you see 5 colored lines with points showing trends over time.
+
+```{r}
+ggplot(data = gapminder_summary_continent_year,
+       mapping = aes(x = year,
+                     y = lifeExp,
+                     color = continent)) +
+  geom_line() +
+  geom_point()
+```
+
+## Task 5: Create a barplot
 
 ### with `geom_col()`
 
-1.  A code chunk has already been created.
+1.  Write code to create a barplot showing the number of countries per continent.
 
-2.  Use the `ggplot()` function and the `gapminder_summary_2007` object to create a barplot using the `geom_col()` function with the following aesthetic mappings:
+2.  Start with: `ggplot(data = gapminder_summary_2007)` to use the `gapminder_summary_2007` object as the data for plot.
+
+3.  Then, add a comma after `gapminder_summary_2007` and add `mapping = aes()` function.
+
+4.  Inside `aes()`, add the following aesthetic mappings:
 
 -   continent to the x-axis;
 -   count to the y-axis;
 
-3.  Run the code contained in the code chunk and fix any errors.
+5.  Add a `+` at the end of the line, then on a new line add: `geom_col()`
+
+6.  Run the code and verify you see 5 bars showing counts per continent.
 
 ```{r}
-
+ggplot(data = gapminder_summary_2007,
+       mapping = aes(x = continent,
+                     y = count)) +
+  geom_col()
 ```
 
 ### with `geom_bar()`
 
-1.  A code chunk has already been created.
+1.  Write code to create the same barplot but using `geom_bar()` instead.
 
-2.  Use the `ggplot()` function and the `gapminder_2007` object to create a barplot using the `geom_bar()` function with the following aesthetic mappings:
+2.  Start with: `ggplot(data = gapminder_2007)` to use the `gapminder_2007` object as the data for plot.
+
+3.  Then, add a comma after `gapminder_2007` and add `mapping = aes()` function.
+
+4.  Inside `aes()`, add the following aesthetic mapping:
 
 -   continent to the x-axis;
 
-3.  Run the code contained in the code chunk and fix any errors.
+5.  Add a `+` at the end of the line, then on a new line add: `geom_bar()`
 
-4.  The plot is identical to the plot created with `geom_col()`. Why? What does the `geom_bar()` function do? Write your text here:
+6.  Run the code and notice the plot is identical to the one created with `geom_col()`.
 
-```{r}
+7.  Reflect: What does `geom_bar()` do differently than `geom_col()`? Write your answer here:
 
-```
-
-## Task 9: Create a histogram
-
-1.  A code chunk has already been created.
-
-2.  Use the `ggplot()` function and the `gapminder_2007` object to create a histogram using the `geom_histogram()` function with the following aesthetic mappings:
-
--   life expectancy to the x-axis;
--   continent to color using the `fill = continent` argument inside `aes()`
-
-3.  Run the code contained in the code chunk and fix any errors.
-
-4.  Inside the `geom_histogram()` function, add the following arguments and values:
-
--   `col = "grey30"`
--   `breaks = seq(40, 85, 2.5)`
-
-5.  Run the code contained in the code chunk and fix any errors.
-
-6.  Describe how the `geom_histogram()` function is similar to the `geom_bar()` function.
-
-7.  What happens by adding the 'breaks' argument? Play around with the numbers inside of `seq()` to see what changes. Describe here what you observe:
+*Your answer here:*
 
 ```{r}
-
+ggplot(data = gapminder_2007,
+       mapping = aes(x = continent)) +
+  geom_bar()
 ```
 
-## Task 10: Scatterplot and faceting
+## Task 6: Create a histogram
 
-1.  A code chunk has already been created.
+1.  Write code to create a histogram showing the distribution of life expectancy colored by continent.
 
-2.  Use the `ggplot()` function and assign `gapminder_2007` and create a scatterplot using the `geom_point()`function with the following aesthetic mappings:
+2.  Start with: `ggplot(data = gapminder_2007)` to use the `gapminder_2007` object as the data for plot.
 
--   gdpPercap the x-axis;
+3.  Then, add a comma after `gapminder_2007` and add `mapping = aes()` function.
+
+4.  Inside `aes()`, add the following aesthetic mappings:
+
+-   lifeExp to the x-axis;
+-   continent to fill using the `fill = continent` argument
+
+5.  Add a `+` at the end of the line, then on a new line add: `geom_histogram()`
+
+6.  Run the code and observe the stacked histogram.
+
+7.  Now modify `geom_histogram()` by adding these arguments inside the parentheses:
+    - `col = "grey30"` (adds borders to bars)
+    - `breaks = seq(40, 85, 2.5)` (controls bin width)
+
+8.  Experiment: Change the numbers in `seq()` and describe what happens:
+
+*Your answer here:*
+
+```{r}
+ggplot(data = gapminder_2007,
+       mapping = aes(x = lifeExp,
+                     fill = continent)) +
+  geom_histogram(col = "grey30",
+                 breaks = seq(40, 85, 2.5))
+```
+
+## Task 7: Scatterplot and faceting
+
+1.  Write code to create a scatterplot showing the relationship between GDP per capita and life expectancy.
+
+2.  Start with: `ggplot(data = gapminder_2007)` to use the `gapminder_2007` object as the data for plot.
+
+3.  Then, add a comma after `gapminder_2007` and add `mapping = aes()` function.
+
+4.  Inside `aes()`, add the following aesthetic mappings:
+
+-   gdpPercap to the x-axis;
 -   lifeExp to the y-axis;
--   population to the size argument;
--   country to color using the `color = country` argument inside `aes()`
+-   population to size;
+-   country to color
 
-4.  Run the code contained in the code chunk and fix any errors.
+5.  Add a `+` at the end of the line, then on a new line add: `geom_point()`
 
-5.  Use the variable continent to facet the plot by adding: `facet_wrap(~continent)`.
+6.  Run the code and notice the legend is overwhelming with too many countries.
 
-6.  Edit `geom_point()` to remove the legend: `geom_point(show.legend = FALSE)`
+7.  Modify `geom_point()` by adding `show.legend = FALSE` inside the parentheses.
 
-7.  Run the code contained in the code chunk and fix any errors.
+8.  Add another `+` at the end, then on a new line add: `facet_wrap(~continent)` to create separate panels for each continent.
 
-```{r}
-
-```
-
-## Task 11: Create a lineplot and use facets
-
-1.  A code chunk with complete code has already been prepared.
-
-2.  Run the code contained in the code chunk and fix any errors.
-
-3.  Remove the '#' sign at the line that starts with the `scale_color_manual()` function
-
-4.  What is stored in the `country_colors` object? Find out by executing the object in the Console (type it to the Console and hit enter). Do the same again, but with a question mark `?country_colors`.
-
-5.  Next to the code chunk option `#| eval:` change the value from `false` to `true`.
-
-6.  Render the document and fix any errors.
+9.  Run the code and verify you see 5 panels with scatterplots, one for each continent.
 
 ```{r}
-#| eval: false
-
-ggplot(data = gapminder,
-       mapping = aes(x = year,
+ggplot(data = gapminder_2007,
+       mapping = aes(x = gdpPercap,
                      y = lifeExp,
-                     group = country,
+                     size = pop,
                      color = country)) +
-  geom_line(lwd = 1, show.legend = FALSE) +
-  facet_wrap(~continent) +
-  # scale_color_manual(values = country_colors) +
-  theme_minimal()
-
+  geom_point(show.legend = FALSE) +
+  facet_wrap(~continent)
 ```
 
-## Task 12: Create a choropleth Maps
 
-You can also prepare maps with `ggplot2`. It's beyond the scope of the class to teach you the foundations of spatial data in R, but a popular package to work with spatial data is the `sf` (Simple Features) R Package. The `rnaturalearth` R Package facilitates world mapping by making [Natural Earth](https://www.naturalearthdata.com/) map data more easily available to R users.
-
-The code chunk below contains code for a world map that shows countries by income group. To view the map, do the following:
-
-1.  Run the code contained in the code chunk and fix any errors.
-
-2.  Next to the code chunk option `#| eval:` change the value from `false` to `true`.
-
-3.  Render the document and fix any errors.
-
-```{r}
-#| eval: false
-
-world <- ne_countries(scale = "small", returnclass = "sf")
-
-world |>
-  mutate(income_grp = factor(income_grp, ordered = T)) |>
-  ggplot(aes(fill = income_grp)) +
-  geom_sf() +
-  theme_void() +
-  theme(legend.position = "top") +
-  labs(fill = "Income Group:") +
-  guides(fill = guide_legend(nrow = 2, byrow = TRUE))
-
-
-```
-
-The code for the code chunk is taken from here: More here: https://bookdown.org/alhdzsz/data_viz_ir/maps.html
-
-### Working with spatial data in R
-
-If you are interested in working with spatial data in R, then we recommend the following resources for further study:
-
--   Geocompuation with R - Book: https://geocompr.robinlovelace.net/
--   Simple Features for R - Article: https://r-spatial.github.io/sf/articles/sf1.html
--   tmap: thematic maps in R - R Package: https://r-tmap.github.io/tmap/
-
-## Task 13: Data communication
+## Task 10: Data communication
 
 **In the YAML header (between the three dashes at the top of the document)**
 
 1.  Add your name as the author of this document
 2.  Render the document and fix any errors
 
-## Task 14: Complete assignment
+## Task 11: Complete assignment
 
 ### Stage, Commit & Push to GitHub
 
