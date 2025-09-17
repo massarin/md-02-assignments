@@ -1,0 +1,137 @@
+---
+title: "Make a Plot"
+author: ""
+format:
+  html:
+    embed-resources: true
+editor: visual
+execute:
+  warning: false
+editor_options:
+  chunk_output_type: console
+---
+
+## Task 1: Import
+
+The required packages for this homework exercise have already been added to the following code-chunk.
+
+1.  Run the following code chunk. Tipp: Click on the green play button in the top right corner of the code chunk.
+
+```{r}
+library(gapminder)
+library(ggplot2)
+library(dplyr)
+```
+
+## Task 2: Transform for data in 2007
+
+**Fill in the gaps**
+
+1.  A code chunk has already been created below.
+
+2.  Start with the `gapminder` object and add the pipe operator at the end of the line.
+
+3.  On a new line use the `filter()` function to narrow down the data for observation of the year 2007.
+
+4.  Use the assignment operator to assign the data to an object named `gapminder_2007`.
+
+5.  Run the code contained in the code chunk and fix any errors.
+
+6.  Next to the code chunk option `#| eval:` change the value from `false` to `true`.
+
+7.  Render the document and fix any errors.
+
+```{r}
+#| eval: false
+
+gapminder_2007 <- ___ |>
+  ___(year == 2007)
+```
+
+## Task 3: Summarize data for life expectancy by continent
+
+**Fill in the gaps**
+
+1.  A code chunk has already been created.
+
+2.  Start with the `gapminder_2007` object and add the pipe operator at the end of the line.
+
+3.  On a new line use the `group_by()` function to group the operations that follow by continent. Add the pipe operator at the end of the line.
+
+4.  On a new line use the `summarise()` function to calculate the number of observations (count) and median life expectancy.
+
+5.  Use the assignment operator to assign the data to an object named `gapminder_summary_2007`.
+
+6.  Run the code contained in the code chunk and fix any errors.
+
+7.  Next to the code chunk option `#| eval:` change the value from `false` to `true`.
+
+8.  Render the document and fix any errors.
+
+```{r}
+#| eval: false
+
+gapminder_summary_2007 <- ___ |>
+  group_by(___) |>
+  summarise(
+    count = n(),
+    lifeExp = median(___)
+  )
+```
+
+## Task 4: Summarize data for life expectancy by continent and year
+
+**Fill in the gaps**
+
+1.  A code chunk has already been created.
+
+2.  Start with the `gapminder` object and add the pipe operator at the end of the line.
+
+3.  On a new line use the `group_by()` function to group the operations that follow by continent and year. Add the pipe operator at the end of the line.
+
+4.  On a new line use the `summarise()` function to calculate and median life expectancy.
+
+5.  Use the assignment operator to assign the data to an object named `gapminder_summary_continent_year` .
+
+6.  Run the code contained in the code chunk and fix any errors.
+
+7.  Next to the code chunk option `#| eval:` change the value from `false` to `true`.
+
+8.  Render the document and fix any errors.
+
+```{r}
+#| eval: false
+
+gapminder_summary_continent_year <- gapminder ___
+  group_by(continent, ___) |>
+  ___(lifeExp = median(lifeExp))
+
+```
+
+## Task 13: Data communication
+
+**In the YAML header (between the three dashes at the top of the document)**
+
+1.  Add your name as the author of this document
+2.  Render the document and fix any errors
+
+## Task 14: Complete assignment
+
+### Stage, Commit & Push to GitHub
+
+1.  Open the Git pane in RStudio. It's in the top right corner in a separate tab.
+2.  **Stage** your changes by checking appropriate box next to all files (if you select one file with your mouse, you can then highlight them all with Ctrl + A on your keyboard and check all boxes)
+3.  Write a meaningful commit message (e.g. "Completed homework assignment 02.) in the **Commit message** box
+4.  Click **Commit**. Note that every commit needs to have a commit message associated with it.
+
+### Open an issue on GitHub
+
+Once you have ensured that the Quarto document renders without errors and you have pushed all your changes to GitHub, you can complete the assignment by opening an issue on
+
+1.  Open [github.com](https://github.com/) in your browser.
+2.  Navigate to the GitHub organisation for the course.
+3.  Find the repository md-02-assignments that ends with your GitHub username.
+4.  Click on the "Issues" tab.
+5.  Click on the green "New issue" button.
+6.  In the "Title" field write: "Completed module 2 assignments".
+7.  In the "Leave a comment" field, tag the course instructors @larnsce and ask some questions.
