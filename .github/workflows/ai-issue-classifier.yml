@@ -17,7 +17,7 @@ jobs:
     - name: Find all config files
       id: find-configs
       run: |
-        configs=$(find configs -name "*.json" -not -name "*.example" | jq -R -s -c 'split("\n")[:-1]')
+        configs=$(find .github/configs -name "*.json" -not -name "*.example" | jq -R -s -c 'split("\n")[:-1]')
         echo "configs=$configs" >> $GITHUB_OUTPUT
         echo "Found configs: $configs"
 
@@ -64,7 +64,7 @@ jobs:
       id: classify
       uses: actions/ai-inference@v1
       with:
-        prompt-file: 'prompts/classify-issue.prompt.yml'
+        prompt-file: '.github/prompts/classify-issue.prompt.yml'
         file_input: |
           title: /tmp/issue-title.txt
           body: /tmp/issue-body.txt
