@@ -51,20 +51,20 @@ gapminder_summary_continent_year <- gapminder |>
 
 ## Task 3: Create a boxplot
 
-1.  Write code to create a boxplot showing life expectancy by continent.
+Write code to create a boxplot showing life expectancy by continent.
 
-2.  Start with: `ggplot(data = gapminder_2007)` to use the `gapminder_2007` object as the data for plot.
+1.  Start with: `ggplot(data = gapminder_2007)` to use the `gapminder_2007` object as the data for plot.
 
-3.  Then, add a comma after `gapminder_2007` and add `mapping = aes()` function.
+2.  Then, add a comma after `gapminder_2007` and add `mapping = aes()` function.
 
-4.  Inside `aes()`, add the following aesthetic mappings:
+3.  Inside `aes()`, add the following aesthetic mappings:
 
--   year to the x-axis;
+-   continent to the x-axis;
 -   life expectancy to the y-axis;
 
-5.  Add a `+` at the end of the line, then on a new line add: `geom_boxplot()`
+4.  Add a `+` at the end of the line, then on a new line add: `geom_boxplot()`
 
-6.  Run the code and verify you see 5 boxes.
+5.  Run the code and verify you see 5 boxes.
 
 ```{r}
 ggplot(data = gapminder_2007,
@@ -75,23 +75,23 @@ ggplot(data = gapminder_2007,
 
 ## Task 4: Create a timeseries plot
 
-1.  Write code to create a timeseries plot showing how median life expectancy changed over time for each continent.
+Write code to create a timeseries plot showing how median life expectancy changed over time for each continent.
 
-2.  Start with: `ggplot(data = gapminder_summary_continent_year)` to use the `gapminder_summary_continent_year` object as the data for plot.
+1.  Start with: `ggplot(data = gapminder_summary_continent_year)` to use the `gapminder_summary_continent_year` object as the data for plot.
 
-3.  Then, add a comma after `gapminder_summary_continent_year` and add `mapping = aes()` function.
+2.  Then, add a comma after `gapminder_summary_continent_year` and add `mapping = aes()` function.
 
-4.  Inside `aes()`, add the following aesthetic mappings:
+3.  Inside `aes()`, add the following aesthetic mappings:
 
 -   year to the x-axis;
 -   life expectancy to the y-axis;
 -   continent to color using the `color = continent` argument
 
-5.  Add a `+` at the end of the line, then on a new line add: `geom_line()`
+4.  Add a `+` at the end of the line, then on a new line add: `geom_line()`
 
-6.  Add another `+` at the end of the line, then on a new line add: `geom_point()`
+5.  Add another `+` at the end of the line, then on a new line add: `geom_point()`
 
-7.  Run the code and verify you see 5 colored lines with points showing trends over time.
+6.  Run the code and verify you see 5 colored lines with points showing trends over time.
 
 ```{r}
 ggplot(data = gapminder_summary_continent_year,
@@ -106,20 +106,20 @@ ggplot(data = gapminder_summary_continent_year,
 
 ### with `geom_col()`
 
-1.  Write code to create a barplot showing the number of countries per continent.
+Write code to create a barplot showing the number of countries per continent.
 
-2.  Start with: `ggplot(data = gapminder_summary_2007)` to use the `gapminder_summary_2007` object as the data for plot.
+1.  Start with: `ggplot(data = gapminder_summary_2007)` to use the `gapminder_summary_2007` object as the data for plot.
 
-3.  Then, add a comma after `gapminder_summary_2007` and add `mapping = aes()` function.
+2.  Then, add a comma after `gapminder_summary_2007` and add `mapping = aes()` function.
 
-4.  Inside `aes()`, add the following aesthetic mappings:
+3.  Inside `aes()`, add the following aesthetic mappings:
 
 -   continent to the x-axis;
 -   count to the y-axis;
 
-5.  Add a `+` at the end of the line, then on a new line add: `geom_col()`
+4.  Add a `+` at the end of the line, then on a new line add: `geom_col()`
 
-6.  Run the code and verify you see 5 bars showing counts per continent.
+5.  Run the code and verify you see 5 bars showing counts per continent.
 
 ```{r}
 ggplot(data = gapminder_summary_2007,
@@ -130,21 +130,21 @@ ggplot(data = gapminder_summary_2007,
 
 ### with `geom_bar()`
 
-1.  Write code to create the same barplot but using `geom_bar()` instead.
+Write code to create the same barplot but using `geom_bar()` instead.
 
-2.  Start with: `ggplot(data = gapminder_2007)` to use the `gapminder_2007` object as the data for plot.
+1.  Start with: `ggplot(data = gapminder_2007)` to use the `gapminder_2007` object as the data for plot.
 
-3.  Then, add a comma after `gapminder_2007` and add `mapping = aes()` function.
+2.  Then, add a comma after `gapminder_2007` and add `mapping = aes()` function.
 
-4.  Inside `aes()`, add the following aesthetic mapping:
+3.  Inside `aes()`, add the following aesthetic mapping:
 
 -   continent to the x-axis;
 
-5.  Add a `+` at the end of the line, then on a new line add: `geom_bar()`
+4.  Add a `+` at the end of the line, then on a new line add: `geom_bar()`
 
-6.  Run the code and notice the plot is identical to the one created with `geom_col()`.
+5.  Run the code and notice the plot is identical to the one created with `geom_col()`.
 
-7.  Reflect: What does `geom_bar()` do differently than `geom_col()`? Write your answer here:
+6.  Reflect: What does `geom_bar()` do differently than `geom_col()`? Write your answer here:
 
 *Your answer here:*
 
@@ -156,27 +156,27 @@ ggplot(data = gapminder_2007,
 
 ## Task 6: Create a histogram
 
-1.  Write code to create a histogram showing the distribution of life expectancy colored by continent.
+Write code to create a histogram showing the distribution of life expectancy colored by continent.
 
-2.  Start with: `ggplot(data = gapminder_2007)` to use the `gapminder_2007` object as the data for plot.
+1.  Start with: `ggplot(data = gapminder_2007)` to use the `gapminder_2007` object as the data for plot.
 
-3.  Then, add a comma after `gapminder_2007` and add `mapping = aes()` function.
+2.  Then, add a comma after `gapminder_2007` and add `mapping = aes()` function.
 
-4.  Inside `aes()`, add the following aesthetic mappings:
+3.  Inside `aes()`, add the following aesthetic mappings:
 
 -   lifeExp to the x-axis;
 -   continent to fill using the `fill = continent` argument
 
-5.  Add a `+` at the end of the line, then on a new line add: `geom_histogram()`
+4.  Add a `+` at the end of the line, then on a new line add: `geom_histogram()`
 
-6.  Run the code and observe the stacked histogram.
+5.  Run the code and observe the stacked histogram.
 
-7.  Now modify `geom_histogram()` by adding these arguments inside the parentheses:
+6.  Now modify `geom_histogram()` by adding these arguments inside the parentheses:
 
     -   `col = "grey30"` (adds borders to bars)
     -   `breaks = seq(40, 85, 2.5)` (controls bin width)
 
-8.  Experiment: Change the numbers in `seq()` and describe what happens:
+7.  Experiment: Change the numbers in `seq()` and describe what happens:
 
 *Your answer here:*
 
@@ -190,28 +190,28 @@ ggplot(data = gapminder_2007,
 
 ## Task 7: Scatterplot and faceting
 
-1.  Write code to create a scatterplot showing the relationship between GDP per capita and life expectancy.
+Write code to create a scatterplot showing the relationship between GDP per capita and life expectancy.
 
-2.  Start with: `ggplot(data = gapminder_2007)` to use the `gapminder_2007` object as the data for plot.
+1.  Start with: `ggplot(data = gapminder_2007)` to use the `gapminder_2007` object as the data for plot.
 
-3.  Then, add a comma after `gapminder_2007` and add `mapping = aes()` function.
+2.  Then, add a comma after `gapminder_2007` and add `mapping = aes()` function.
 
-4.  Inside `aes()`, add the following aesthetic mappings:
+3.  Inside `aes()`, add the following aesthetic mappings:
 
 -   gdpPercap to the x-axis;
 -   lifeExp to the y-axis;
 -   population to size;
 -   country to color
 
-5.  Add a `+` at the end of the line, then on a new line add: `geom_point()`
+4.  Add a `+` at the end of the line, then on a new line add: `geom_point()`
 
-6.  Run the code and notice the legend is overwhelming with too many countries.
+5.  Run the code and notice the legend is overwhelming with too many countries.
 
-7.  Modify `geom_point()` by adding `show.legend = FALSE` inside the parentheses.
+6.  Modify `geom_point()` by adding `show.legend = FALSE` inside the parentheses.
 
-8.  Add another `+` at the end, then on a new line add: `facet_wrap(~continent)` to create separate panels for each continent.
+7.  Add another `+` at the end, then on a new line add: `facet_wrap(~continent)` to create separate panels for each continent.
 
-9.  Run the code and verify you see 5 panels with scatterplots, one for each continent.
+8.  Run the code and verify you see 5 panels with scatterplots, one for each continent.
 
 ```{r}
 ggplot(data = gapminder_2007,
