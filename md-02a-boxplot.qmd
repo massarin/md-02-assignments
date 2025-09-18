@@ -1,0 +1,161 @@
+---
+title: "Make a Plot"
+author: "Your Name Here"
+format:
+  html:
+    embed-resources: true
+editor: visual
+execute:
+  warning: false
+editor_options:
+  chunk_output_type: console
+---
+
+## Task 1: Import
+
+The required packages for this homework exercise have already been added to the following code-chunk.
+
+1.  Run the following code chunk. Tipp: Click on the green play button in the top right corner of the code chunk.
+
+```{r}
+library(gapminder)
+library(ggplot2)
+library(dplyr)
+```
+
+## Task 2: Transform for data in 2007
+
+**Read and understand the code**
+
+1.  Read the code below out loud, verbally describing what each line does.
+
+2.  Run the code chunk below.
+
+3.  Observe the output in the console.
+
+```{r}
+gapminder |>
+  filter(year == 2007)
+```
+
+4.  Write in your own words what you think this code does:
+
+*Your answer here:*
+
+5.  Now run the code chunk below that assigns the result to an object.
+
+6.  **Tip:** Watch the Environment tab in RStudio (top right pane) to see the new object appear.
+
+```{r}
+gapminder_2007 <- gapminder |>
+  filter(year == 2007)
+```
+
+7.  Click on `gapminder_2007` in the Environment tab to view the data. What do you notice about this dataset compared to the original `gapminder` dataset?
+
+*Your answer here:*
+
+## Task 3: Summarize data for life expectancy by continent
+
+**Read and understand the code**
+
+1.  Read the code below out loud, verbally describing what each line does.
+
+2.  Run the code chunk below.
+
+3.  Observe the output in the console.
+
+```{r}
+gapminder_2007 |>
+  group_by(continent) |>
+  summarise(
+    count = n(),
+    lifeExp = median(lifeExp)
+  )
+```
+
+4.  Write in your own words what you think this code does:
+
+*Your answer here:*
+
+5.  Now run the code chunk below that assigns the result to an object.
+
+6.  **Tip:** Watch the Environment tab to see how this new object differs from `gapminder_2007`.
+
+```{r}
+gapminder_summary_2007 <- gapminder_2007 |>
+  group_by(continent) |>
+  summarise(
+    count = n(),
+    lifeExp = median(lifeExp)
+  )
+```
+
+7.  Look at the `gapminder_summary_2007` object in the Environment tab. How many rows and columns does it have? Why is this different from `gapminder_2007`?
+
+*Your answer here:*
+
+## Task 4: Summarize data for life expectancy by continent and year
+
+**Read and understand the code**
+
+1.  Read the code below out loud, verbally describing what each line does.
+
+2.  Run the code chunk below.
+
+3.  Observe the output in the console.
+
+```{r}
+gapminder |>
+  group_by(continent, year) |>
+  summarise(lifeExp = median(lifeExp))
+```
+
+4.  Write in your own words what you think this code does:
+
+*Your answer here:*
+
+5.  Now run the code chunk below that assigns the result to an object.\$
+
+6.  **Tip:** Notice how the Environment tab shows different information for different types of objects.
+
+```{r}
+gapminder_summary_continent_year <- gapminder |>
+  group_by(continent, year) |>
+  summarise(lifeExp = median(lifeExp))
+```
+
+7.  Compare this result with Task 3. What's different about grouping by two variables instead of one? How does this affect the output?
+
+*Your answer here:*
+
+## Task 5: Create your first plot
+
+Now that you understand how to transform data, let's create a plot.
+
+1.  Read the code below out loud, verbally describing what you think it will do.
+
+2.  Run the code chunk.
+
+```{r}
+ggplot(data = gapminder_2007, 
+       mapping = aes(x = continent, 
+                     y = lifeExp)) +
+  geom_boxplot()
+```
+
+3.  Write in your own words what this plot shows:
+
+*Your answer here:*
+
+## Task 6: Data communication
+
+**In the YAML header (between the three dashes at the top of the document)**
+
+1.  Add your name as the author of this document.
+
+2.  Render the document and fix any errors.
+
+## Task 7: Commit & Push & Issue
+
+-   Refer back to the instructions for Step 2 and Step 3 on the course website to complete the assignment 02a: <https://ds4owd-002.github.io/website/assignments/md-02/am-02-1-data-visualisation.html#step-2-commit-and-push-your-changes>
